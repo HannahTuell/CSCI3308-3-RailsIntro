@@ -7,7 +7,11 @@ class MoviesController < ApplicationController
   end
 
   def index
+    # defines an enumerable collection of all possible values of a movie rating
+    @all_ratings = Movie.ratings
+    # define the @movies to be displayed as either all, or sorted when :order symbol is passed
     @movies = Movie.find(:all, :order => params[:sort])
+
   end
 
   def new
