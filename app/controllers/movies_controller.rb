@@ -7,10 +7,15 @@ class MoviesController < ApplicationController
   end
 
   def index
-    # defines an enumerable collection of all possible values of a movie rating
-    @all_ratings = Movie.ratings
     # define the @movies to be displayed as either all, or sorted when :order symbol is passed
     @movies = Movie.find(:all, :order => params[:sort])
+
+    # defines an enumerable collection of all possible values of a movie rating
+    @all_ratings = Movie.all_ratings
+    unless params[:ratings].nil?
+      @checked_ratings = params[:ratings].keys
+      @movies = Movie.find(:all, :order => params[:sort]).select { |m| @checked_ratings.include?(m.rating) }
+    end  
 
   end
 
