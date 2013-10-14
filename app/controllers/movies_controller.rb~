@@ -9,6 +9,7 @@ class MoviesController < ApplicationController
   def index
     if(params[:sort] && session[:sort] && params[:ratings] && session[:ratings] == nil)
       @movies = Movie.all
+    end
     # initialize an instance variable 'redirect' as false (or zero)
     @redirect = 0  
     # defines an enumerable collection of all possible values of a movie rating
