@@ -4,6 +4,7 @@
   Include: 
   - @all_ratings.each do |rating|
     = rating
+    -# this will render boxes that reflect the passed ratings from params, or if there are none, it will check all the boxes
     = check_box_tag "ratings[#{rating}]", rating, if params[:ratings]; params[:ratings].include?(rating) else true end 
   = submit_tag 'Refresh', :id => "ratings_submit"
 
